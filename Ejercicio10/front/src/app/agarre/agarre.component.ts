@@ -25,7 +25,6 @@ export class AgarreComponent implements OnInit {
               private _masterURL:MasterURLService) {
   }
   ngOnInit() {
-
     this._ActivatedRoute
       .params
       .subscribe(parametros => {
@@ -42,11 +41,11 @@ export class AgarreComponent implements OnInit {
               console.log(err)
             }
           )
-
       });
 
   }
   crearAgarre(formulario: NgForm) {
+    console.log(this._parametros.idEntrenador);
     console.log(formulario);
     this.disabledButtons.NuevoAgarreFormSubmitButton = true;
     this._http.post(this._masterURL.url + "Agarre", {
@@ -66,8 +65,6 @@ export class AgarreComponent implements OnInit {
       (err) => {
         this.disabledButtons.NuevoAgarreFormSubmitButton = false;
         console.log("Ocurrió un error", err);
-      },
-      () => {
       }
     );
   }

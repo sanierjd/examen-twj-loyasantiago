@@ -8,7 +8,7 @@ export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'usuario', component: UsuarioComponent},
-  {path: 'agarre', component: AgarreComponent}
+  {path: 'usuario/:idUsuario/agarre', component: AgarreComponent}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

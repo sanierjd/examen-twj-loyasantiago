@@ -16,8 +16,6 @@ export class UsuarioComponent implements OnInit {
     NuevoUsuarioFormSubmitButton: false,
     Oculto : false
   };
-
-
   constructor(private _http: Http,
               private _masterURL: MasterURLService) {
   }
@@ -42,7 +40,6 @@ export class UsuarioComponent implements OnInit {
   crearUsuario(formulario: NgForm) {
     console.log(formulario);
     this.disabledButtons.NuevoUsuarioFormSubmitButton = true;
-
 
     this._http.post(this._masterURL.url + "Usuario", {
       nombre: formulario.value.nombre,

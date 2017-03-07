@@ -44,8 +44,7 @@
                  #nombre="ngModel"
                  #nombreElm>
         </div>
-        <button [disabled]="disabledButtons.NuevoAgarreFormSubmitButton||!NuevoAgarreForm.valid"
-                class="btn btn-block btn-success" type="submit">Crear Agarre
+        <button [disabled]="disabledButtons.NuevoAgarreFormSubmitButton||!NuevoAgarreForm.valid" type="submit" class="btn btn-block btn-success" >Crear Agarre
         </button>
       </form>
     </div>
@@ -54,6 +53,7 @@
         <h3>{{agarre.nombre}}</h3>
         <p>Veces: {{agarre.veces}}</p>
         <p>Dinero Gastado: {{agarre.dineroGastado}}</p>
+        <p>{{agarre.idUsuario.nombre}}</p>
       </div>
       <div class="row animated flipInY" >
         <div class="col-sm-5" >

@@ -1,5 +1,5 @@
 {
-  "name": "back",
+  "name": "proyback",
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
@@ -20,7 +20,7 @@
     "grunt-sync": "0.5.2",
     "include-all": "^1.0.0",
     "rc": "1.0.1",
-    "sails": "~0.12.11",
+    "sails": "~0.12.13",
     "sails-disk": "~0.10.9"
   },
   "scripts": {
@@ -30,7 +30,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/back.git"
+    "url": "git://github.com/anonymous node/sails user/proyback.git"
   },
   "author": "anonymous node/sails user",
   "license": ""

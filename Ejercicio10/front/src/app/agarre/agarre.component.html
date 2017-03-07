@@ -1,0 +1,122 @@
+<h1 align="center">{{title}} del usuario {{this._parametros.idUsuario}}</h1>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5">
+      <form class="animated bounceIn" (ngSubmit)="crearAgarre(NuevoAgarreForm)" #NuevoAgarreForm="ngForm">
+
+        <div class="form-group">
+          <label>Agarre</label>
+
+          <input required
+                 minlength="2"
+                 type="text"
+                 class="form-control"
+                 placeholder="Nombre"
+                 name="nombre"
+                 [(ngModel)]="nuevoAgarre.nombre"
+                 #nombre="ngModel"
+                 #nombreElm>
+        </div>
+        <div class="form-group">
+          <label>Veces</label>
+          <input required
+                 min="1"
+                 type="number"
+                 class="form-control"
+                 placeholder="Veces"
+                 name="veces"
+                 [(ngModel)]="nuevoAgarre.veces"
+                 #nombre="ngModel"
+                 #nombreElm>
+        </div>
+        <div class="form-group">
+          <label>dineroGastado</label>
+
+          <input required
+                 type="number"
+                 min = "1"
+                 class="form-control"
+                 placeholder="Dinero"
+                 name="dineroGastado"
+                 [(ngModel)]="nuevoAgarre.dineroGastado"
+                 #nombre="ngModel"
+                 #nombreElm>
+        </div>
+        <button [disabled]="disabledButtons.NuevoAgarreFormSubmitButton||!NuevoAgarreForm.valid"
+                class="btn btn-block btn-success" type="submit">Crear Agarre
+        </button>
+      </form>
+    </div>
+    <div class="col-sm-5 animated flipInX table-bordered ma-margen-top-bottom ma-padding-top-bottom" *ngFor="let agarre of agarres">
+      <div class="text-center">
+        <h3>{{agarre.nombre}}</h3>
+        <p>Veces: {{agarre.veces}}</p>
+        <p>Dinero Gastado: {{agarre.dineroGastado}}</p>
+      </div>
+      <div class="row animated flipInY" >
+        <div class="col-sm-5" >
+          <button class="btn btn-block btn-info"
+                  (click)="disabledButtons.Oculto = false; agarre.formularioCerrado = !agarre.formularioCerrado"
+          >Actualizar</button>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+          <button class="btn btn-block btn-danger" (click)="borrarAgarre(agarre.id)">Borrar</button>
+        </div>
+        <div class="row">
+          <div class="col-sm-4"></div>
+        </div>
+      </div>
+      <div class="div" [hidden]="agarre.formularioCerrado || (disabledButtons.Oculto)">
+        <form action="">
+          <form class="animated bounceIn" (ngSubmit)="actualizarAgarre(agarre)" #NuevoAgarreForm="ngForm">
+            <div  class="form-group">
+              <label>Agarre</label>
+              <input required
+                     minlength="2"
+                     type="text"
+                     class="form-control"
+                     placeholder="Nombre"
+                     name="nombre"
+                     [(ngModel)]="agarre.nombre"
+                     #nombre="ngModel"
+                     #nombreElm>
+              <input required
+                     min="1"
+                     type="number"
+                     class="form-control"
+                     placeholder="Veces"
+                     name="veces"
+                     [(ngModel)]="agarre.veces"
+                     #nombre="ngModel"
+                     #nombreElm>
+              <input required
+                     min="1"
+                     type="number"
+                     class="form-control"
+                     placeholder="Dinero Gastado"
+                     name="dineroGastado"
+                     [(ngModel)]="agarre.dineroGastado"
+                     #nombre="ngModel"
+                     #nombreElm>
+            </div>
+            <button [disabled]="disabledButtons.NuevoAgarreFormSubmitButton||!NuevoAgarreForm.valid" type="submit"
+                    class="btn btn-block btn-success">Actualizar
+            </button>
+            <button type="button"
+                    class="btn btn-block btn-warning"
+                    (click)="agarre.formularioCerrado = !agarre.formularioCerrado"
+            >Cancelar
+            </button>
+          </form>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>

@@ -1,0 +1,120 @@
+<h1 align="center">{{title}}</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5">
+      <form class="animated bounceIn" (ngSubmit)="crearUsuario(NuevoUsuarioForm)" #NuevoUsuarioForm="ngForm">
+        <div class="form-group">
+          <label>Usuario</label>
+
+          <input required
+                 minlength="2"
+                 type="text"
+                 class="form-control"
+                 placeholder="Usuario"
+                 name="nombre"
+                 [(ngModel)]="nuevoUsuario.nombre"
+                 #nombre="ngModel"
+                 #nombreElm>
+        </div>
+        <div class="form-group">
+          <label>Preferencia</label>
+
+          <input required
+                 minlength="2"
+                 type="text"
+                 class="form-control"
+                 placeholder="Preferencia"
+                 name="preferencia"
+                 [(ngModel)]="nuevoUsuario.preferencia"
+                 #nombre="ngModel"
+                 #nombreElm>
+        </div>
+        <div class="form-group">
+          <label>Fecha de Nacimiento</label>
+
+          <input required
+                 type="date"
+                 class="form-control"
+                 placeholder="Fecha de Nacimiento"
+                 name="fechaNacimiento"
+                 [(ngModel)]="nuevoUsuario.fechaNacimiento"
+                 #nombre="ngModel"
+                 #nombreElm>
+        </div>
+        <button [disabled]="disabledButtons.NuevoUsuarioFormSubmitButton||!NuevoUsuarioForm.valid" type="submit"
+                class="btn btn-block btn-success">Crear Usuario
+        </button>
+      </form>
+    </div>
+    <div class="col-sm-5 animated flipInX table-bordered ma-margen-top-bottom ma-padding-top-bottom" *ngFor="let usuario of usuarios">
+      <div class="text-center">
+        <h3>{{usuario.nombre}}</h3>
+        <h3>ID: {{usuario.id}}</h3>
+        <p>Preferencia: {{usuario.preferencia}}</p>
+        <p>Fecha de Nacimiento: {{usuario.fechaNacimiento}} </p>
+      </div>
+
+      <div  class="row animated flipInY" >
+        <div class="col-sm-5" >
+          <button class="btn btn-block btn-info"
+                  (click)="disabledButtons.Oculto = false; usuario.formularioCerrado = !usuario.formularioCerrado"
+          >Actualizar</button>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+          <button class="btn btn-block btn-danger" (click)="borrarUsuario(usuario.id)">Borrar</button>
+        </div>
+        <div class="row">
+          <div class="col-sm-4"></div>
+          <div class="col-sm-4">
+            <button class="btn btn-block btn-success" [routerLink]="['/agarre']">Agarres</button>
+          </div>
+        </div>
+      </div>
+      <div class="div" [hidden]="usuario.formularioCerrado || (disabledButtons.Oculto)">
+        <form action="">
+          <form class="animated bounceIn" (ngSubmit)="actualizarUsuario(usuario)" #NuevoUsuarioForm="ngForm">
+            <div  class="form-group">
+              <label>Usuario</label>
+              <input required
+                     minlength="2"
+                     type="text"
+                     class="form-control"
+                     placeholder="Digite el nuevo nombre"
+                     name="nombre"
+                     [(ngModel)]="usuario.nombre"
+                     #nombre="ngModel"
+                     #nombreElm>
+              <input required
+                     minlength="2"
+                     type="text"
+                     class="form-control"
+                     placeholder="Nueva preferencia"
+                     name="preferencia"
+                     [(ngModel)]="usuario.preferencia"
+                     #nombre="ngModel"
+                     #nombreElm>
+              <input required
+                     type="date"
+                     class="form-control"
+                     placeholder="Nueva fecha de nacimiento"
+                     name="fechaNacimiento"
+                     [(ngModel)]="usuario.fechaNacimiento"
+                     #nombre="ngModel"
+                     #nombreElm>
+            </div>
+            <button [disabled]="disabledButtons.NuevoUsuarioFormSubmitButton||!NuevoUsuarioForm.valid" type="submit"
+                    class="btn btn-block btn-success">Actualizar
+            </button>
+            <button type="button"
+                    class="btn btn-block btn-warning"
+                    (click)="usuario.formularioCerrado = !usuario.formularioCerrado"
+            >Cancelar
+            </button>
+          </form>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

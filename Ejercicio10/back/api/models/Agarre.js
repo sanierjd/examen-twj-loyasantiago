@@ -10,21 +10,9 @@ module.exports = {
   attributes: {
 
     idUsuario:{
-      model:'Usuario',
-      required:true
-    },
-    nombre:{
-      type:'string',
-      required:true
-    },
-    veces:{
-      type:'integer',
-      required:true
-    },
-    dineroGastado:{
-      type:'float',
-      required:true
+      model:"Usuario"
     }
+
 
   }
 };
